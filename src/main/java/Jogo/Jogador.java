@@ -14,11 +14,13 @@ import java.util.Random;
  */
 public class Jogador {
     public String nome;
+    public String codSala;
     public int id;
     public int[] resultado;
     public PrintStream ps;
     
-    public Jogador(String nome, PrintStream ps){
+    public Jogador(String nome, String codSala, PrintStream ps){
+        this.codSala = codSala;
         this.nome = nome;
         this.ps = ps;
         resultado = new int[5];

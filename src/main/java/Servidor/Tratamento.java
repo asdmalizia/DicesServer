@@ -37,8 +37,11 @@ public class Tratamento implements Runnable{
             if(msg.contains("criarJogador")){
                 String[] args = msg.split("/");
                 String codSala = args[1];
+                System.out.println(codSala);
                 String nome = args[2];
-                output.println(controlador.criarJogador(nome, codSala, output));
+                System.out.println(nome);
+                int x = controlador.criarJogador(nome, codSala, output);
+                output.println(x);
             }
             if(msg.contains("verJogador")){
                 String[] args = msg.split("/");
