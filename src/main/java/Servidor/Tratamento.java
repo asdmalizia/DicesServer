@@ -37,11 +37,8 @@ public class Tratamento implements Runnable{
             if(msg.contains("criarJogador")){
                 String[] args = msg.split("/");
                 String codSala = args[1];
-                System.out.println(codSala);
                 String nome = args[2];
-                System.out.println(nome);
-                int x = controlador.criarJogador(nome, codSala, output);
-                output.println(x);
+                output.println(controlador.criarJogador(nome, codSala, output));
             }
             if(msg.contains("verJogador")){
                 String[] args = msg.split("/");
@@ -54,6 +51,20 @@ public class Tratamento implements Runnable{
                 String codSala = args[2];
                 controlador.avisar(aviso, codSala);
             }
+            if(msg.contains("iniciar")){
+                String[] args = msg.split("/");
+                String codSala = args[1];
+                controlador.iniciar(codSala);
+            }
+            if(msg.contains("jogar")){
+                String[] args = msg.split("/");
+                int id = Integer.valueOf(args[1]);
+                String codSala = args[2];
+                if(!controlador.jogar(id, codSala)){
+                    output.println("Aguarde sua vez!");
+                }
+            }
+            
         }
     s.close();    
     }

@@ -23,9 +23,16 @@ public class Jogador {
         this.codSala = codSala;
         this.nome = nome;
         this.ps = ps;
-        resultado = new int[5];
+        resultado = new int[6];
         id = new Random().nextInt(100);
     }
     
-    
+    public int[] jogar(){
+        int[] ans = new int[6];
+        for(int i = 0; i < 5; i++){
+            ans[i] = new Random().nextInt(6) + 1;
+        }
+        resultado = ans;
+        return ans;
+    }
 }

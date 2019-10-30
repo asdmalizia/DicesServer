@@ -15,10 +15,16 @@ import java.util.Random;
 public class Sala {
     public String codigo;
     public ArrayList<Jogador> jogadores;
+    public int proximo;
     
     public Sala(){
         Random r = new Random();
         codigo = Integer.toString(Math.abs(r.nextInt()), 36);
         jogadores = new ArrayList<>();
+        proximo = 0;
+    }
+    
+    public void atualizaProximo(){
+        proximo = (proximo + 1) % jogadores.size();    
     }
 }

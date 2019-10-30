@@ -61,4 +61,32 @@ public class Controlador {
         }
     }
     
+    public void iniciar(String codSala){
+        avisar("Jogo iniciado", codSala);
+        Salas.stream().filter((sala) -> (sala.codigo.equals(codSala))).forEachOrdered((sala) -> {
+            avisar(Integer.toString(sala.jogadores.get(sala.proximo).id), codSala);
+        });
+    }
+    
+    public Boolean jogar(int id, String codSala){
+        for(Sala sala : Salas){
+            if(sala.codigo.equals(codSala)){
+                for(Jogador j : sala.jogadores){
+                    if(j.id == id && id == sala.jogadores.get(sala.proximo).id){
+                        j.jogar();
+                        String msg = "";
+                        for(int dado : j.resultado){
+                            msg = msg + Integer.toString(dado) + ",";
+                        }
+                        msg = msg.substring(0, msg.length() - 1);
+                        avisar(msg, codSala);
+                        sala.atualizaProximo();
+                        avisar(Integer.toString(sala.jogadores.get(sala.proximo).id), codSala);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
