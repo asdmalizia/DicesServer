@@ -64,6 +64,11 @@ public class Tratamento implements Runnable{
                     output.println("Aguarde sua vez!");
                 }
             }
+            if(msg.contains("verPontos")){
+                String[] args = msg.split("/");
+                int id = Integer.valueOf(args[1]);
+                output.println(controlador.verPontos(id));
+            }
             
         }
     s.close();    

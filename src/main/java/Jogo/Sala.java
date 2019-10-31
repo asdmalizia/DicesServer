@@ -27,4 +27,20 @@ public class Sala {
     public void atualizaProximo(){
         proximo = (proximo + 1) % jogadores.size();    
     }
+    
+    public int vencedor(){
+        int max_id = 0, max = 0;
+        for(Jogador j : jogadores){
+            int pontuacao = 0;
+            for(int i = 0; i < j.resultado.length; i++){
+                pontuacao += j.resultado[i];
+            }
+            if(pontuacao > max){
+                max = pontuacao;
+                max_id = j.id;
+            }
+        }
+        return max_id;
+    }
+    
 }
